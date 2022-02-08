@@ -457,10 +457,16 @@ def scoreboard_menu():
     top5 = font.render(f"Top 5 best players", True, [60, 60, 60])
     players = []
     has_records = False
-    if len(data) <= 0:
+    if 0 < len(data) < 5:
+        for i in range(len(data)):
+            players.append(
+                font.render(f"{i + 1}. {data[i]['name']} — {data[i]['score']} ({data[i]['date']} {data[i]['time']})",
+                            True, [83, 83, 83]))
+            has_records = True
+    elif len(data) <= 0:
         players.append(font.render(f"So far, no one has set a record. Be the first!", True, [83, 83, 83]))
     else:
-        for i in range(len(data)):
+        for i in range(5):
             players.append(
                 font.render(f"{i + 1}. {data[i]['name']} — {data[i]['score']} ({data[i]['date']} {data[i]['time']})",
                             True, [83, 83, 83]))
@@ -475,7 +481,7 @@ def scoreboard_menu():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if b1.collidepoint(pygame.mouse.get_pos()):
                     menu()
-        screen.blit(top5, (280, 125))
+        screen.blit(top5, (305, 130))
         y_pos = 175
         for player in players:
             if has_records:
