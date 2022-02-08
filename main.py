@@ -494,7 +494,7 @@ def menu():
     b3 = button(screen, (350, 300), "Score")
     enter_name = font.render(f"Enter your name and press Enter key", True, [83, 83, 83])
     manager = pygame_gui.UIManager((800, 500))
-    text_input = UITextEntryLine(relative_rect=Rect(310, 160, 200, 20), manager=manager)
+    text_input = UITextEntryLine(relative_rect=Rect(310, 160, 200, 30), manager=manager)
     while True:
         screen.blit(enter_name, (210, 135))
         time_delta = clock.tick(60) / 1000.0
