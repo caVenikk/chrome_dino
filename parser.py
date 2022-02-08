@@ -6,7 +6,9 @@ def save_score(name, gameState):
     f = open('score.txt', 'r')
     lines = f.readlines()
     lines.append(
-        f'{name} {gameState.count} {"0" if len(str(now.day)) == 1 else ""}{now.day}.{"0" if len(str(now.month)) == 1 else ""}{now.month}.{now.year} {now.hour}:{now.minute}\n')
+        f'{name} {gameState.count} {"0" if len(str(now.day)) == 1 else ""}{now.day}.' +
+        f'{"0" if len(str(now.month)) == 1 else ""}{now.month}.{now.year}' +
+        f'{"0" if len(str(now.hour)) == 1 else ""}{now.hour}:{"0" if len(str(now.minute)) == 1 else ""}{now.minute}\n')
     f.close()
     f = open('score.txt', 'w')
     f.writelines(lines)
